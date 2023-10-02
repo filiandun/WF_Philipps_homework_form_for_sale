@@ -38,9 +38,11 @@ namespace HW
 
         private void buttonAddToCart_Click(object sender, EventArgs e)
         {
-            if (this.comboBoxProducts.SelectedIndex != -1 && this.numericUpDownNumProducts.Value != 0)
+            int selectedIndex = this.comboBoxProducts.SelectedIndex;
+
+            if (selectedIndex != -1)
             {
-                this.listBoxCart.Items.Add($"{this.comboBoxProducts.SelectedItem} {this.numericUpDownNumProducts.Value}");
+                this.listBoxCart.Items.Add($"{this.comboBoxProducts.SelectedItem}");
             }
             else
             {
@@ -52,10 +54,7 @@ namespace HW
         {
             if (this.listBoxCart.SelectedItems.Count > 0)
             {
-                for (int i = 0; i < this.listBoxCart.SelectedItems.Count; i++)
-                {
-                    this.listBoxCart.Items.RemoveAt(i);
-                }
+                this.listBoxCart.Items.Remove(this.listBoxCart.SelectedItem);
             }
         }
 
@@ -97,7 +96,7 @@ namespace HW
                 if (form2.ShowDialog() == DialogResult.OK)
                 {
                     this.products.RemoveAt(selectedIndex); // удаляется предыдущий товар из списка товаров
-                    this.products.Insert(selectedIndex, form2.Product); // добавляется измененный товар по индксу в список товаров
+                    this.products.Insert(selectedIndex, form2.Product); // добавляется измененный товар по индексу в список товаров
 
                     this.comboBoxProducts.Items.RemoveAt(selectedIndex); // удаляется товар из списка в listBox
                     this.comboBoxProducts.Items.Insert(selectedIndex, form2.Product); // добавляется измененный товар в список в listBox
@@ -110,8 +109,12 @@ namespace HW
 
         private void comboBoxProducts_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.numericUpDownNumProducts.Value = 1;
             this.textBoxPriceOfOneProduct.Text = this.products[this.comboBoxProducts.SelectedIndex].Price.ToString();
+        }
+
+        private void buttonPunchCheck_Click(object sender, EventArgs e)
+        {
+            // НУЖНО ПЕРЕДЕЛАТЬ, ЧТОБЫ БЫЛО ДВА СПИСКА С ТОВАРАМИ, ОДИН ПОД КОРЗИНУ, ДРУГОЙ ПОД СПИСОК ТОВАРОВ
         }
     }
 }
