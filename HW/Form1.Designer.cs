@@ -30,22 +30,22 @@
         {
             this.listBoxCart = new System.Windows.Forms.ListBox();
             this.groupBoxCart = new System.Windows.Forms.GroupBox();
+            this.labelRub2 = new System.Windows.Forms.Label();
+            this.labelPriceOfAllProducts = new System.Windows.Forms.Label();
+            this.textBoxPriceOfAllProducts = new System.Windows.Forms.TextBox();
             this.buttonClearCart = new System.Windows.Forms.Button();
             this.buttonDeleteFromCart = new System.Windows.Forms.Button();
             this.groupBoxProducts = new System.Windows.Forms.GroupBox();
+            this.labelRub1 = new System.Windows.Forms.Label();
+            this.labelPriceOfOneProduct = new System.Windows.Forms.Label();
             this.textBoxPriceOfOneProduct = new System.Windows.Forms.TextBox();
             this.buttonAddNewProduct = new System.Windows.Forms.Button();
             this.buttonEditProduct = new System.Windows.Forms.Button();
             this.buttonAddToCart = new System.Windows.Forms.Button();
             this.comboBoxProducts = new System.Windows.Forms.ComboBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.buttonPunchCheck = new System.Windows.Forms.Button();
-            this.labelRub = new System.Windows.Forms.Label();
-            this.labelPriceOfOneProduct = new System.Windows.Forms.Label();
             this.groupBoxCart.SuspendLayout();
             this.groupBoxProducts.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // listBoxCart
@@ -53,11 +53,15 @@
             this.listBoxCart.FormattingEnabled = true;
             this.listBoxCart.Location = new System.Drawing.Point(6, 19);
             this.listBoxCart.Name = "listBoxCart";
-            this.listBoxCart.Size = new System.Drawing.Size(409, 238);
+            this.listBoxCart.Size = new System.Drawing.Size(409, 212);
             this.listBoxCart.TabIndex = 0;
+            this.listBoxCart.ValueMemberChanged += new System.EventHandler(this.buttonClearCart_Click);
             // 
             // groupBoxCart
             // 
+            this.groupBoxCart.Controls.Add(this.labelRub2);
+            this.groupBoxCart.Controls.Add(this.labelPriceOfAllProducts);
+            this.groupBoxCart.Controls.Add(this.textBoxPriceOfAllProducts);
             this.groupBoxCart.Controls.Add(this.buttonClearCart);
             this.groupBoxCart.Controls.Add(this.buttonDeleteFromCart);
             this.groupBoxCart.Controls.Add(this.listBoxCart);
@@ -67,6 +71,32 @@
             this.groupBoxCart.TabIndex = 1;
             this.groupBoxCart.TabStop = false;
             this.groupBoxCart.Text = "Корзина";
+            // 
+            // labelRub2
+            // 
+            this.labelRub2.AutoSize = true;
+            this.labelRub2.Location = new System.Drawing.Point(388, 240);
+            this.labelRub2.Name = "labelRub2";
+            this.labelRub2.Size = new System.Drawing.Size(27, 13);
+            this.labelRub2.TabIndex = 8;
+            this.labelRub2.Text = "руб.";
+            // 
+            // labelPriceOfAllProducts
+            // 
+            this.labelPriceOfAllProducts.AutoSize = true;
+            this.labelPriceOfAllProducts.Location = new System.Drawing.Point(8, 240);
+            this.labelPriceOfAllProducts.Name = "labelPriceOfAllProducts";
+            this.labelPriceOfAllProducts.Size = new System.Drawing.Size(69, 13);
+            this.labelPriceOfAllProducts.TabIndex = 8;
+            this.labelPriceOfAllProducts.Text = "Цена за всё";
+            // 
+            // textBoxPriceOfAllProducts
+            // 
+            this.textBoxPriceOfAllProducts.Location = new System.Drawing.Point(81, 237);
+            this.textBoxPriceOfAllProducts.Name = "textBoxPriceOfAllProducts";
+            this.textBoxPriceOfAllProducts.ReadOnly = true;
+            this.textBoxPriceOfAllProducts.Size = new System.Drawing.Size(301, 20);
+            this.textBoxPriceOfAllProducts.TabIndex = 1;
             // 
             // buttonClearCart
             // 
@@ -90,19 +120,37 @@
             // 
             // groupBoxProducts
             // 
-            this.groupBoxProducts.Controls.Add(this.labelRub);
+            this.groupBoxProducts.Controls.Add(this.labelRub1);
             this.groupBoxProducts.Controls.Add(this.labelPriceOfOneProduct);
             this.groupBoxProducts.Controls.Add(this.textBoxPriceOfOneProduct);
             this.groupBoxProducts.Controls.Add(this.buttonAddNewProduct);
             this.groupBoxProducts.Controls.Add(this.buttonEditProduct);
             this.groupBoxProducts.Controls.Add(this.buttonAddToCart);
             this.groupBoxProducts.Controls.Add(this.comboBoxProducts);
-            this.groupBoxProducts.Location = new System.Drawing.Point(685, 12);
+            this.groupBoxProducts.Location = new System.Drawing.Point(453, 12);
             this.groupBoxProducts.Name = "groupBoxProducts";
             this.groupBoxProducts.Size = new System.Drawing.Size(398, 289);
             this.groupBoxProducts.TabIndex = 2;
             this.groupBoxProducts.TabStop = false;
             this.groupBoxProducts.Text = "Выбрать существующий товар";
+            // 
+            // labelRub1
+            // 
+            this.labelRub1.AutoSize = true;
+            this.labelRub1.Location = new System.Drawing.Point(364, 57);
+            this.labelRub1.Name = "labelRub1";
+            this.labelRub1.Size = new System.Drawing.Size(27, 13);
+            this.labelRub1.TabIndex = 7;
+            this.labelRub1.Text = "руб.";
+            // 
+            // labelPriceOfOneProduct
+            // 
+            this.labelPriceOfOneProduct.AutoSize = true;
+            this.labelPriceOfOneProduct.Location = new System.Drawing.Point(6, 57);
+            this.labelPriceOfOneProduct.Name = "labelPriceOfOneProduct";
+            this.labelPriceOfOneProduct.Size = new System.Drawing.Size(67, 13);
+            this.labelPriceOfOneProduct.TabIndex = 6;
+            this.labelPriceOfOneProduct.Text = "Цена за шт.";
             // 
             // textBoxPriceOfOneProduct
             // 
@@ -151,68 +199,33 @@
             this.comboBoxProducts.TabIndex = 0;
             this.comboBoxProducts.SelectedIndexChanged += new System.EventHandler(this.comboBoxProducts_SelectedIndexChanged);
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.textBox2);
-            this.groupBox2.Location = new System.Drawing.Point(439, 76);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(240, 46);
-            this.groupBox2.TabIndex = 2;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = " Цена за всё";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(6, 19);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(228, 20);
-            this.textBox2.TabIndex = 1;
-            // 
             // buttonPunchCheck
             // 
-            this.buttonPunchCheck.Location = new System.Drawing.Point(446, 31);
+            this.buttonPunchCheck.Location = new System.Drawing.Point(12, 330);
             this.buttonPunchCheck.Name = "buttonPunchCheck";
-            this.buttonPunchCheck.Size = new System.Drawing.Size(228, 39);
+            this.buttonPunchCheck.Size = new System.Drawing.Size(839, 45);
             this.buttonPunchCheck.TabIndex = 3;
             this.buttonPunchCheck.Text = "Пробить чек";
             this.buttonPunchCheck.UseVisualStyleBackColor = true;
             this.buttonPunchCheck.Click += new System.EventHandler(this.buttonPunchCheck_Click);
             // 
-            // labelRub
-            // 
-            this.labelRub.AutoSize = true;
-            this.labelRub.Location = new System.Drawing.Point(364, 57);
-            this.labelRub.Name = "labelRub";
-            this.labelRub.Size = new System.Drawing.Size(27, 13);
-            this.labelRub.TabIndex = 7;
-            this.labelRub.Text = "руб.";
-            // 
-            // labelPriceOfOneProduct
-            // 
-            this.labelPriceOfOneProduct.AutoSize = true;
-            this.labelPriceOfOneProduct.Location = new System.Drawing.Point(6, 57);
-            this.labelPriceOfOneProduct.Name = "labelPriceOfOneProduct";
-            this.labelPriceOfOneProduct.Size = new System.Drawing.Size(67, 13);
-            this.labelPriceOfOneProduct.TabIndex = 6;
-            this.labelPriceOfOneProduct.Text = "Цена за шт.";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1095, 314);
+            this.ClientSize = new System.Drawing.Size(863, 386);
             this.Controls.Add(this.buttonPunchCheck);
-            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBoxProducts);
             this.Controls.Add(this.groupBoxCart);
+            this.MaximumSize = new System.Drawing.Size(879, 425);
+            this.MinimumSize = new System.Drawing.Size(879, 425);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Касса";
             this.groupBoxCart.ResumeLayout(false);
+            this.groupBoxCart.PerformLayout();
             this.groupBoxProducts.ResumeLayout(false);
             this.groupBoxProducts.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -228,12 +241,13 @@
         private System.Windows.Forms.Button buttonEditProduct;
         private System.Windows.Forms.Button buttonAddToCart;
         private System.Windows.Forms.ComboBox comboBoxProducts;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBoxPriceOfAllProducts;
         private System.Windows.Forms.Button buttonPunchCheck;
         private System.Windows.Forms.TextBox textBoxPriceOfOneProduct;
-        private System.Windows.Forms.Label labelRub;
+        private System.Windows.Forms.Label labelRub1;
         private System.Windows.Forms.Label labelPriceOfOneProduct;
+        private System.Windows.Forms.Label labelRub2;
+        private System.Windows.Forms.Label labelPriceOfAllProducts;
     }
 }
 

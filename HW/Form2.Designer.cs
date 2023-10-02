@@ -122,7 +122,10 @@
             this.Controls.Add(this.groupBoxProductDesciption);
             this.Controls.Add(this.groupBoxProductName);
             this.Controls.Add(this.buttonCancel);
+            this.MaximumSize = new System.Drawing.Size(456, 335);
+            this.MinimumSize = new System.Drawing.Size(456, 335);
             this.Name = "Form2";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form2";
             this.groupBoxProductName.ResumeLayout(false);
             this.groupBoxProductName.PerformLayout();
